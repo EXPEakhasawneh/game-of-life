@@ -1,0 +1,25 @@
+{
+  "name": "game-of-life",
+  "version": "1.0.0",
+  "description": "Practice TDD ",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EXPEakhasawneh/game-of-life.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EXPEakhasawneh/game-of-life/issues"
+  },
+  "homepage": "https://github.com/EXPEakhasawneh/game-of-life#readme",
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "chai": "^4.2.0"
+  }
+}
