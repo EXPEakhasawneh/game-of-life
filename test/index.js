@@ -65,7 +65,34 @@ describe('Game of Life suite', function() {
     });
     
     it('check for underpopulation condition, if a living cell has less than two living neighbors', function() {
-        const point = main.neighborsList(main.initialCell());
-        assert.equal(main.checkUnderpopulation(point), true);
-    })
+        assert.equal(main.checkUnderpopulation(main.initialCell()), true);
+    });
+    
+    it('check for stays alive condition, if a living cell has two or three living neighbors', function () {
+        assert.equal(main.staysAlive(main.initialCell()), false);
+    });
+    
+    it('check for overcrowding condition, if a living cell has more than three living neighbors', function () {
+        assert.equal(main.overcrowding(main.initialCell()), false);
+    });
+    
+    it('check a point if it\s not a living cell, return false',function () {
+        assert.equal(main.isLivingCell([0, [1, 1]]), false);
+    });
+
+    it('check a point if it\s a cell, return true',function () {
+        assert.equal(main.isLivingCell(main.initialCell()), true);
+    });
+    
+    it('check for comes to life condition, if a dead cell has exactly three living neighbors', function () {
+        assert.equal(main.comesToLife(main.initialCell()), false);
+    });
+    
+    it('return the length of living neighbors cells', function () {
+        assert.equal(main.neighborsLivingListLength(main.initialCell()), 0);
+    });
+    
+    // it('should set state for each point for the next generation', function () {
+    //    
+    // })
 });

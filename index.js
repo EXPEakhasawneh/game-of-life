@@ -47,7 +47,32 @@ function neighborsList(pointCoordinations) {
     return neighbors;
 }
 
-const lifeList = [];
+function checkUnderpopulation(point) {
+    return neighborsList(point).filter(point => point[0] === 1).length < 2 && isLivingCell(point);
+}
+
+function staysAlive(point) {
+    const neighborsListLength = neighborsLivingListLength(point);
+    return neighborsListLength === 2 || neighborsListLength === 3 && isLivingCell(point); 
+}
+
+function overcrowding(point) {
+    return isLivingCell(point) && neighborsLivingListLength(point) > 3;
+}
+
+function comesToLife(point) {
+    return !isLivingCell(point) && neighborsLivingListLength(point) === 3;
+}
+
+function isLivingCell(point) {
+    return !!point[0];
+}
+
+function neighborsLivingListLength(point) {
+    return neighborsList(point).filter(point => point[0] === 1).length;
+}
+
+const lifeList = [initialCell()];
 
 module.exports = {
     initialCell,
@@ -58,4 +83,10 @@ module.exports = {
     initialiseCell,
     findCellInLifeList,
     neighborsList,
+    checkUnderpopulation,
+    staysAlive,
+    overcrowding,
+    comesToLife,
+    isLivingCell,
+    neighborsLivingListLength,
 };
